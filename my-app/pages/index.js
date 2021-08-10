@@ -2,6 +2,8 @@ import axios from 'axios';
 import Cards from '../Components/Cards'
 import React, { useEffect, useState } from 'react';
 
+import styles from '../styles/Cards.module.css'
+
 export default function Home() {
   const [characters, setCharacters] = useState([])
   useEffect(() => {
@@ -11,10 +13,10 @@ export default function Home() {
   }, [])
 
   return (
-    <div>
+    <div className={styles.container}>
       {
         characters.length > 0 
-        ? <Cards characters={characters} />
+        ?characters.map((item, index) => <Cards character={item} key={index} />)
         : <p>Aguarde!</p>
       }
     </div>
