@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cards from '../Components/Cards'
 import React, { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -11,8 +12,11 @@ export default function Home() {
 
   return (
     <div>
-      {console.log(characters)}
-      <h1>Olá</h1>      
+      {
+        characters.length > 0 
+        ? <Cards characters={characters} />
+        : <p>Aguarde!</p>
+      }
     </div>
   )
 }
