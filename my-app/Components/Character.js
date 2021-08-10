@@ -1,10 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import styles from '../styles/Character.module.css'
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import useStyles from './styledComponents/backDrop';
+import TableSeries from './TableSeries';
+import TableFilmes from './TableFilmes';
+import { Button } from '@material-ui/core';
 
 const Character = ({ id }) => {
-  const [info, setInfo] = useState([])
+  const classes = useStyles();
+  const [info, setInfo] = useState([]);
+
+  console.log(info)
 
   const urlThumb = info.length > 0 ? info[0].thumbnail.path + '.' + info[0].thumbnail.extension : ''
 
@@ -16,17 +24,29 @@ const Character = ({ id }) => {
     .then(response => setInfo(response.data.data.results))
   },[url])
 
+  console.log(info)
+
   return (
-    <div className>
+    <div>
       {
         info.length > 0 
         ?
         <>
           <img className={styles.imageCard} src={ urlThumb } />
           <p>{info[0].name}</p>
+          <p>Lista de series:</p>
+          <TableSeries series={info[0].series}/>
+          <p>Lista de Filmes:</p>
+          <TableFilmes filmes={info[0].stories} />
         </>
-        :<p>Aguarde.</p>
+        : 
+        <Backdrop className={classes.backdrop} open={info.length === 0}>
+          <CircularProgress color='inherit' />
+        </Backdrop>
       }
+      <Button variant="contained" color="primary" href="/">
+        Voltar
+      </Button>
     </div>
   )
 }

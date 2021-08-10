@@ -17,6 +17,8 @@ const Cards = ({ character }) => {
   const { name } = character
   const { thumbnail } = character
 
+  console.log(character)
+
   const urlThumb = thumbnail.path + '.' + thumbnail.extension
 
   return (
