@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
 
-
 import { useStyles } from './styledComponents/CardStyle';
 
 const Cards = ({ character }) => {
@@ -42,8 +41,8 @@ const Cards = ({ character }) => {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
+        <CardActions className={classes.link}>
+          <Button size="small" color="primary" href="/">
             <Link href={{
               pathname: '/info/id',
               query: {

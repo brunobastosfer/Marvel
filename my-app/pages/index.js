@@ -23,6 +23,8 @@ export default function Home() {
         ?characters.map((item, index) => <Cards character={item} key={index} />)
         :
         <Backdrop className={classes.backdrop} open={characters.length === 0}>
+          <p>Jarvis está validando suas informações. Por favor aguarde, Tony!</p>
+          <img src='https://miro.medium.com/max/861/0*Hwc_uw3VBMICEd84.jpg' width='800' />
           <CircularProgress color='inherit' />
         </Backdrop>
       }

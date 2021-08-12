@@ -27,7 +27,7 @@ const Character = ({ id }) => {
   console.log(info)
 
   return (
-    <div>
+    <div className={styles.container}>
       {
         info.length > 0 
         ?
@@ -44,7 +44,7 @@ const Character = ({ id }) => {
           <CircularProgress color='inherit' />
         </Backdrop>
       }
-      <Button variant="contained" color="primary" href="/">
+      <Button className={styles.buttonBack} variant="contained" color="primary" href="/">
         Voltar
       </Button>
     </div>
